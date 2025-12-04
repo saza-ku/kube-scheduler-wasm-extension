@@ -59,4 +59,6 @@ jobs:
         run: make testdata
 
       - name: Check diff
-        run: git diff --exit-code -- .
+        run: | # Note: File mode of generated files may differ by environment, so ignore it.
+          git config core.filemode false
+          git diff --exit-code -- .
